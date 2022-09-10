@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto+Mono:wght@300;400;600&display=swap');/*==================
+   Global Utilities
+===================*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:'Roboto Mono', monospace;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+/*=====================*/
+body{
+    background-image: linear-gradient(to right top, #000000, #070606, #0d0c0c, #111110, #151514, #151514, #151514, #151514, #111110, #0d0c0c, #070606, #000000);    color: #fff;
+}
+
+.container{
+    width: 90%;
+    height: 100vh;
+    margin: auto;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.head h1{
+    font-family:'Roboto Mono', monospace;
+    font-size: 36px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-shadow: 5px 5px #5414cc;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.head p{
+    font-size: 30px;
+    line-height: 1.5;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+}
+
+.search label{
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.search #mood{
+    display: flex;
+    align-items: center;
+    border: solid 5px #5414cc;
+    border-radius: 5px;
+    padding: 15px 80px;
+    outline: none;
+}
+
+.search input::placeholder{
+    text-align: center;
+    font-weight: bold;
+    opacity: .8;
+    color: #5414cc;
+    font-size: 15px;
+}
+
+.btns{
+    display: flex;
+    gap: 30px;
+}
+.btns button{
+    border-radius :5px;
+    padding: 10px 30px;
+    font-size: 16px;
+    border: solid 3px #fff;
+    box-shadow: 5px 5px #5414cc;
+    background: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.btns button:hover{
+    cursor: pointer;
+    background-color: #5414cc;
+    border: solid 3px #5414cc;
+    box-shadow: 5px 5px #523688;
+    transition: ease-in-out 0.30s;
+}
+
+
+/*
+        const MoodContractAddress = "<contract address>";
+        const MoodContractABI = <contract ABI>
+        let MoodContract;
+        let signer;
+        */

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3a0840cc9c.js" crossorigin="anonymous"></script>
+    <title>My First Dapp</title> 
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <h1>This is my dApp!</h1>
+            <p>Here we can set <br> or get the mood</p>   
+        </div> 
+
+        <form action="search" class="search">
+            <input type="text" id="mood" placeholder="Input Mood...">
+        </form>
+
+        <div class="btns">
+            <button onclick="getMood()">Get Mood</button>
+            <button onclick="setMood()">Set Mood</button>
+        </div>
+    </div>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+     type="application/javascript">
+    </script>
+    <script>
+        window.ethereum.enable();
+        var provider = new ethers.providers.Web3Provider(
+            web3.currentProvider,
+            "ropsten"
+        );
+        var MoodContractAddress = "0x4C23ae2Ee6ACFec92DDAF3509825b28BDc0e6Fae";
+        var MoodContractABI = [
+            {
+                "inputs": [],
+                "name": "getMood",
+                "outputs": [
+                    {
+                        "internalType": "string",
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "string",
+                        "name": "_mood",
+                        "type": "string"
+                    },
+                ],
+                "name": "setMood",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+        ];
+        var MoodContract;
+        var signer;
+            provider.listAccounts().then(function (accounts) {
+                signer = provider.getSigner(accounts[0]);
+                MoodContract = new ethers.Contract(
+                    MoodContractAddress,
+                    MoodContractABI,
+                    signer
+                );
+            });
+            async function getMood() {
+                getMoodPromise = MoodContract.getMood();
+                var Mood = await getMoodPromise;
+                console.log(Mood);
+            }
+            async function setMood() {
+                let mood = document.getElementById("mood").value;
+                setMoodPromise = MoodContract.setMood(mood);
+                await setMoodPromise;
+            }
+    </script>
+</body>
+</html>
